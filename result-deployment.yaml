@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: result-app
+  namespace: vote
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: result
+  template:
+    metadata:
+      labels:
+        app: result
+    spec:
+      containers:
+      - name: result
+        image: abdelatty99/result-app
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: "0.1"
+            memory: "64Mi"
+          limits:
+            cpu: "0.3"
+            memory: "128Mi"
+
